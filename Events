@@ -1,0 +1,7 @@
+SELECT *
+FROM ee.RawEvent re
+INNER JOIN ee.EventCode ec ON ec.EventCodeID = re.EventCodeID
+WHERE ec.DisplayCode = 'PF200'
+AND re.IsDeleted = 0
+AND re.AssetId in (Select AssetID from def.Asset where PlantAssetId like 1571) -- insert asset id from browser of the particular site
+Order by 'StartTimeUTC' desc 
